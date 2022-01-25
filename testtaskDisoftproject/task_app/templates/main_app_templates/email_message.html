@@ -1,0 +1,12 @@
+{% autoescape off %}
+
+Hi {{user.username}}
+
+You have new task: {{title}}.
+
+    Content:
+{{content}}
+
+From {{author}}
+
+{% endautoescape %}

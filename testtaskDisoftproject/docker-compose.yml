@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=POSTGRES_NAME
+      - POSTGRES_USER=POSTGRES_USER
+      - POSTGRES_PASSWORD=POSTGRES_PASSWORD
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=POSTGRES_NAME
+      - POSTGRES_USER=POSTGRES_USER
+      - POSTGRES_PASSWORD=POSTGRES_PASSWORD
+      - EMAIL_HOST_USER=EMAIL_HOST_USER@gmail.com
+      - EMAIL_HOST_PASSWORD=EMAIL_HOST_PASSWORD
+      - SECRET_KEY=$@0qwq&45rlflf%_ohy)k8qc@@fpy^2&!)vd4f)au6)ok3tq=q
+    depends_on:
+      - db
