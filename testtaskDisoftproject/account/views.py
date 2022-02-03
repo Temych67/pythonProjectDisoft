@@ -1,3 +1,3 @@
 from django.shortcuts import render
-# Added some new commit
+# Added some new commits
 # Create your views here.
